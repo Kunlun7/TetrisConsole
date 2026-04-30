@@ -14,10 +14,7 @@ namespace TetrisConsole
 			APoint p1 = new APoint(3, 4, '*');
 			p1.Draw();
 
-			APoint p2 = new APoint();
-			p2.x = 3;
-			p2.y = 4;
-			p2.c = '*';
+			APoint p2 = new APoint () { x = 5, y = 6, c = '#'};
 			p2.Draw();
 
 
