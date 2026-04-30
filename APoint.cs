@@ -12,12 +12,13 @@ namespace TetrisConsole
 		public int y;
 		public char c;
 
+		public APoint() {}
+
 		public APoint(int _x, int _y, char _c) {
 
 			x = _x;
 			y = _y;
-			c = _c;
-		
+			c = _c;		
 		}
 
 
