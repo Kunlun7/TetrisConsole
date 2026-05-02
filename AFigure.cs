@@ -20,5 +20,15 @@ namespace TetrisConsole
 				p.Draw();
 			}
 		}
+
+		public void Move(EDirection dir)
+		{
+
+			foreach (APoint p in Points) {
+
+				p.Move(dir);
+			}
+		}
+
 	}
 }
