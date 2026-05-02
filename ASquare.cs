@@ -19,6 +19,15 @@ namespace TetrisConsole
 			Points[2] = new APoint(x, y + 1, c);
 			Points[3] = new APoint(x + 1, y + 1, c);
 		}
+		public void Draw()
+		{
+
+			foreach (APoint p in Points)
+			{
+
+				p.Draw();
+			}
+		}
 
 	}
 }
