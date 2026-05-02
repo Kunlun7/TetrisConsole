@@ -17,12 +17,14 @@ namespace TetrisConsole
 			APoint p2 = new APoint () { x = 5, y = 6, c = '*'};
 			p2.Draw();
 
-			ASquare sq1 = new ASquare(2, 5, '#');
-			sq1.Draw();
+			AFigure[] fig = new AFigure[2];
+			fig[0] = new ASquare(2, 5, '#');
+			fig[1] = new AStick(8, 5, '#');
 
-			AStick st1 = new AStick(8, 5, '#');
-			st1.Draw();
+			foreach (AFigure f in fig) {
 
+				f.Draw();
+			}
 
 			Console.ReadLine();
 		}
