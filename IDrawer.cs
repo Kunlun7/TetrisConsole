@@ -10,5 +10,7 @@ namespace TetrisConsole
 	{
 		void DrawPoint(int x, int y);
 		void ClearPoint(int x, int y);
+		void WriteGameOver();
+		void InitField();
 	}
 }

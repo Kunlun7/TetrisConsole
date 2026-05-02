@@ -17,13 +17,6 @@ namespace TetrisConsole
 			{
 				return _winWidth;
 			}
-
-			set
-			{
-				_winWidth = value;
-				Console.SetWindowSize(AsField._winWidth, AsField._winHeight + 1);
-				Console.SetBufferSize(AsField._winWidth, AsField._winHeight + 1);
-			}
 		}
 
 		public static int Height
@@ -31,13 +24,6 @@ namespace TetrisConsole
 			get
 			{
 				return _winHeight;
-			}
-
-			set
-			{
-				_winHeight = value;
-				Console.SetWindowSize(AsField._winWidth, AsField._winHeight + 1);
-				Console.SetBufferSize(AsField._winWidth, AsField._winHeight + 1);
 			}
 		}
 
@@ -53,13 +39,13 @@ namespace TetrisConsole
 			}
 		}
 
-		public static void Init()
-		{
-			Console.SetWindowSize(AsField.Width, AsField.Height + 1);
-			Console.SetBufferSize(AsField.Width, AsField.Height + 1);
-			Console.CursorVisible = false;
-			Redraw();
-		}
+		//public static void Init()
+		//{
+		//	Console.SetWindowSize(AsField.Width, AsField.Height + 1);
+		//	Console.SetBufferSize(AsField.Width, AsField.Height + 1);
+		//	Console.CursorVisible = false;
+		//	Redraw();
+		//}
 
 		public static void TryDeleteLines()
 		{
@@ -102,7 +88,7 @@ namespace TetrisConsole
 		}
 
 
-		private static void Redraw()
+		public static void Redraw()
 		{
 			for (int j = 0; j < Height; j++)
 			{
@@ -110,11 +96,11 @@ namespace TetrisConsole
 				{
 					if (_heap[j][i])
 					{
-						AsDrawer.DrawPoint(i, j);
+						DrawerProvider.Drawer.DrawPoint(i, j);
 					}
 					else
 					{
-						AsDrawer.ClearPoint(i, j);
+						DrawerProvider.Drawer.ClearPoint(i, j);
 					}
 				}
 			}

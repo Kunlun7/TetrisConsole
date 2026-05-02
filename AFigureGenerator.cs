@@ -6,14 +6,12 @@ namespace TetrisConsole
 	{
 		private int _x;
 		private int _y;
-		private char _c;
 		private Random _rand = new Random();
 
-		public AFigureGenerator(int x, int y, char c)
+		public AFigureGenerator(int x, int y)
 		{
 			_x = x;
 			_y = y;
-			_c = c;
 		}
 
 		public AFigure NewFigure()
@@ -23,11 +21,11 @@ namespace TetrisConsole
 			switch (_rand.Next(0, 2))
 			{
 				case 0:
-					f = new ASquare(_x, _y, _c);
+					f = new ASquare(_x, _y);
 					break;
 
 				case 1:
-					f = new AStick(_x, _y, _c);
+					f = new AStick(_x, _y);
 					break;
 
 				case 2:

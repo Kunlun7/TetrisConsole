@@ -10,38 +10,31 @@ namespace TetrisConsole
 	{
 		public int X { get; set; }
 		public int Y;
-		public char C;
 
 		public APoint() {}
 
-		public APoint(int _x, int _y, char _c) {
+		public APoint(int _x, int _y) {
 
 			X = _x;
 			Y = _y;
-			C = _c;		
 		}
 
 		public APoint(APoint p) {
 
 			X = p.X;
 			Y = p.Y;
-			C = p.C;		
 		}
 
 
 		public void Draw()
 		{
-			Console.SetCursorPosition(X, Y);
-			Console.Write(C);
-			Console.SetCursorPosition(0, 0);
+			DrawerProvider.Drawer.DrawPoint(X, Y);
 		}
 
 
 		public void Clear()
 		{
-			Console.SetCursorPosition(X, Y);
-			Console.Write(AsDrawer.FieldChar);
-			Console.SetCursorPosition(0, 0);
+			DrawerProvider.Drawer.ClearPoint(X, Y);
 		}
 
 

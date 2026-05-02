@@ -16,9 +16,9 @@ namespace TetrisConsole
 
 		static void Main(string[] args)
 		{
-			AsField.Init();
+			DrawerProvider.Drawer.InitField();
 
-			FigGen = new AFigureGenerator(AsField.Width / 2, 0, AsDrawer.FigureChar);
+			FigGen = new AFigureGenerator(AsField.Width / 2, 0);
 
 			curFigure = FigGen.NewFigure();
 			SetTimer();
@@ -37,7 +37,7 @@ namespace TetrisConsole
 
 			}
 
-			Console.ReadLine();
+			//Console.ReadLine();
 		}
 
 
@@ -66,7 +66,7 @@ namespace TetrisConsole
 
 				if (curFigure.IsOnTop() && result == EMoveResult.Heap)
 				{
-					WriteGameOver();
+					DrawerProvider.Drawer.WriteGameOver();
 					return true;
 				}
 				else
@@ -80,16 +80,6 @@ namespace TetrisConsole
 				return false;
 			}
 
-		}
-
-		private static void WriteGameOver()
-		{
-			Console.SetCursorPosition(AsField.Width / 2 - 9, AsField.Height / 2 - 1);
-			Console.Write("                  ");
-			Console.SetCursorPosition(AsField.Width / 2 - 9, AsField.Height / 2);
-			Console.Write(" G A M E  O V E R ");
-			Console.SetCursorPosition(AsField.Width / 2 - 9, AsField.Height / 2 + 1);
-			Console.Write("                  ");
 		}
 
 		private static EMoveResult HandleKey(AFigure curFigure, ConsoleKey key)
