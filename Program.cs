@@ -5,6 +5,7 @@ namespace TetrisConsole
 {
 	class Program
 	{
+		static AFigureGenerator FigGen;
 
 		static void Main(string[] args)
 		{
@@ -13,7 +14,7 @@ namespace TetrisConsole
 
 			//AsField.SetWidth(20);
 
-			AFigureGenerator FigGen = new AFigureGenerator(20, 0, '*');
+			FigGen = new AFigureGenerator(20, 0, '*');
 
 			AFigure curFigure = FigGen.NewFigure();
 
@@ -24,7 +25,8 @@ namespace TetrisConsole
 				{
 
 					ConsoleKeyInfo key = Console.ReadKey();
-					HandleKey(curFigure, key);
+					EMoveResult result = HandleKey(curFigure, key.Key);
+					ProcessResult(result, ref curFigure);
 				}
 
 			}
@@ -32,33 +34,36 @@ namespace TetrisConsole
 			Console.ReadLine();
 		}
 
-		private static void HandleKey(AFigure curFigure, ConsoleKeyInfo key)
+		private static bool ProcessResult(EMoveResult result, ref AFigure curFigure)
 		{
-			switch (key.Key)
+			if (result == EMoveResult.BorderBottom || result == EMoveResult.Heap)
+			{
+				AsField.AddFigure(curFigure);
+				curFigure = FigGen.NewFigure();
+				return true;
+			}
+
+			return false;
+		}
+
+		private static EMoveResult HandleKey(AFigure curFigure, ConsoleKey key)
+		{
+			switch (key)
 			{
 				case ConsoleKey.LeftArrow:
-
-					curFigure.TryMove(EDirection.Left);
-					break;
+					return curFigure.TryMove(EDirection.Left);
 
 				case ConsoleKey.RightArrow:
-
-					curFigure.TryMove(EDirection.Right);
-					break;
+					return curFigure.TryMove(EDirection.Right);
 
 				case ConsoleKey.DownArrow:
-
-					curFigure.TryMove(EDirection.Down);
-					break;
+					return curFigure.TryMove(EDirection.Down);
 
 				case ConsoleKey.UpArrow:
-
-					curFigure.Clear();
-					curFigure.TryRotate();
-					curFigure.Draw();
-					break;
-
+					return curFigure.TryRotate();
 			}
+
+			return EMoveResult.Success;
 
 		}
 

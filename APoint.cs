@@ -51,7 +51,7 @@ namespace TetrisConsole
 					break;
 
 				case EDirection.Left:
-					Y -= 1;
+					X -= 1;
 					break;
 
 				case EDirection.Right:
