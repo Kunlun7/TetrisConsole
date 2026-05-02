@@ -33,11 +33,14 @@ namespace TetrisConsole
 
 		public void Move(EDirection dir)
 		{
+			Clear();
 
 			foreach (APoint p in Points) {
 
 				p.Move(dir);
 			}
+
+			Draw();
 		}
 		public abstract void Rotate();
 

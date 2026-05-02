@@ -12,39 +12,44 @@ namespace TetrisConsole
 			Console.SetWindowSize(winWidth, winHeight);
 			Console.SetBufferSize(winWidth, winHeight);
 
-			//APoint p1 = new APoint(3, 4, '*');
-			//p1.Draw();
-
-			//APoint p2 = new APoint() { x = 5, y = 6, c = '*' };
-			//p2.Draw();
-
 			AFigureGenerator FigGen = new AFigureGenerator(20, 0, '*');
 
-			AFigure f = null;
+			AFigure curFigure = FigGen.NewFigure();
 
 			while (true)
 			{
+				// если нажата клавиша в консоли
+				if (Console.KeyAvailable)
+				{
 
-				FigureFall(ref f, FigGen);
-
-				f.Draw();
+					ConsoleKeyInfo key = Console.ReadKey();
+					HandleKey(curFigure, key);
+				}
 
 			}
 
 			Console.ReadLine();
 		}
 
-		static void FigureFall(ref AFigure fig, AFigureGenerator figgen) {
-
-			fig = figgen.NewFigure();
-
-			for (int i = 0; i < 15; i++)
+		private static void HandleKey(AFigure curFigure, ConsoleKeyInfo key)
+		{
+			switch (key.Key)
 			{
+				case ConsoleKey.LeftArrow:
 
-				fig.Clear();
-				fig.Move(EDirection.Down);
-				fig.Draw();
-				Thread.Sleep(200);
+					curFigure.Move(EDirection.Left);
+					break;
+
+				case ConsoleKey.RightArrow:
+
+					curFigure.Move(EDirection.Right);
+					break;
+
+				case ConsoleKey.DownArrow:
+
+					curFigure.Move(EDirection.Down);
+					break;
+
 			}
 
 		}

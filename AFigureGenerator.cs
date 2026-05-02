@@ -36,7 +36,9 @@ namespace TetrisConsole
 				case 3:
 					break;
 
-			}; 
+			};
+
+			f.Draw();
 
 			return f;
 		}
