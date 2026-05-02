@@ -6,11 +6,13 @@ namespace TetrisConsole
 {
 	class Program
 	{
-		static int TimerInterval = 500;
+		static int TimerInterval = 800;
 		static System.Timers.Timer GameTimer;
 
 		static AFigure curFigure;
 		static AFigureGenerator FigGen;
+
+		static private Object _lockObject = new object();
 
 		static void Main(string[] args)
 		{
@@ -26,10 +28,11 @@ namespace TetrisConsole
 				// если нажата клавиша в консоли
 				if (Console.KeyAvailable)
 				{
-
 					ConsoleKeyInfo key = Console.ReadKey();
+					Monitor.Enter(_lockObject);
 					EMoveResult result = HandleKey(curFigure, key.Key);
 					ProcessResult(result, ref curFigure);
+					Monitor.Exit(_lockObject);
 				}
 
 			}
@@ -48,8 +51,10 @@ namespace TetrisConsole
 
 		private static void OnTimedEvent(object sender, ElapsedEventArgs e)
 		{
+			Monitor.Enter(_lockObject);
 			var res = curFigure.TryMove(EDirection.Down);
 			ProcessResult(res, ref curFigure);
+			Monitor.Exit(_lockObject);
 		}
 
 		private static bool ProcessResult(EMoveResult result, ref AFigure curFigure)
