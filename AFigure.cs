@@ -61,7 +61,7 @@ namespace TetrisConsole
 		{
 			foreach (APoint p in plist)
 			{
-				if (p.x < 0 || p.y < 0 || p.x >= 40 || p.y >= 30) {
+				if (p.x < 0 || p.y < 0 || p.x >= AsField.winWidth || p.y >= AsField.winHeight) {
 					return false;
 				}
 			}
@@ -76,6 +76,19 @@ namespace TetrisConsole
 			}
 		}
 
+		internal void TryRotate()
+		{
+			APoint[] newpoints = GetPoints();
+			Rotate(newpoints);
+			if (VerifyPosition(newpoints))
+			{
+				Clear();
+				Points = newpoints;
+				Draw();
+			}
+		}
+
+		public abstract void Rotate(APoint[] plist);
 
 		private APoint[] GetPoints()
 		{
@@ -88,7 +101,6 @@ namespace TetrisConsole
 			return np;
 		}
 
-		public abstract void Rotate();
 
 	}
 }

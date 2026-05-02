@@ -10,8 +10,8 @@ namespace TetrisConsole
 		{
 			int winWidth = 40;
 			int winHeight = 30;
-			Console.SetWindowSize(winWidth, winHeight);
-			Console.SetBufferSize(winWidth, winHeight);
+			Console.SetWindowSize(AsField.winWidth, AsField.winHeight);
+			Console.SetBufferSize(AsField.winWidth, AsField.winHeight);
 
 			AFigureGenerator FigGen = new AFigureGenerator(20, 0, '*');
 
@@ -54,7 +54,7 @@ namespace TetrisConsole
 				case ConsoleKey.UpArrow:
 
 					curFigure.Clear();
-					curFigure.Rotate();
+					curFigure.TryRotate();
 					curFigure.Draw();
 					break;
 
