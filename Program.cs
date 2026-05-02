@@ -20,24 +20,33 @@ namespace TetrisConsole
 
 			AFigureGenerator FigGen = new AFigureGenerator(20, 0, '*');
 
+			AFigure f = null;
 
 			while (true)
 			{
 
-				AFigure F = FigGen.NewFigure();
+				FigureFall(ref f, FigGen);
 
-				for (int i = 0; i < 15; i++)
-				{
-
-					F.Clear();
-					F.Move(EDirection.Down);
-					F.Draw();
-					Thread.Sleep(200);
-				}
+				f.Draw();
 
 			}
 
 			Console.ReadLine();
+		}
+
+		static void FigureFall(ref AFigure fig, AFigureGenerator figgen) {
+
+			fig = figgen.NewFigure();
+
+			for (int i = 0; i < 15; i++)
+			{
+
+				fig.Clear();
+				fig.Move(EDirection.Down);
+				fig.Draw();
+				Thread.Sleep(200);
+			}
+
 		}
 
 	}
