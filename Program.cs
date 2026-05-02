@@ -19,7 +19,7 @@ namespace TetrisConsole
 			FigGen = new AFigureGenerator(AsField.Width / 2, 0, AsDrawer.FigureChar);
 
 			curFigure = FigGen.NewFigure();
-			
+			SetTimer();
 
 			while (true)
 			{
@@ -35,6 +35,21 @@ namespace TetrisConsole
 			}
 
 			Console.ReadLine();
+		}
+
+
+		private static void SetTimer()
+		{
+			GameTimer = new System.Timers.Timer(TimerInterval);
+			GameTimer.Elapsed += OnTimedEvent;
+			GameTimer.AutoReset = true;
+			GameTimer.Enabled = true;
+		}
+
+		private static void OnTimedEvent(object sender, ElapsedEventArgs e)
+		{
+			var res = curFigure.TryMove(EDirection.Down);
+			ProcessResult(res, ref curFigure);
 		}
 
 		private static bool ProcessResult(EMoveResult result, ref AFigure curFigure)
