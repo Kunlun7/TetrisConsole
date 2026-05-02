@@ -61,7 +61,7 @@ namespace TetrisConsole
 		{
 			foreach (APoint p in plist)
 			{
-				if (p.x < 0 || p.y < 0 || p.x >= AsField.GetWidth() || p.y >= AsField.winHeight) {
+				if (p.x < 0 || p.y < 0 || p.x >= AsField.Width || p.y >= AsField.Height) {
 					return false;
 				}
 			}
