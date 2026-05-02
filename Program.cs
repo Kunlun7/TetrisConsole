@@ -51,6 +51,13 @@ namespace TetrisConsole
 					curFigure.TryMove(EDirection.Down);
 					break;
 
+				case ConsoleKey.UpArrow:
+
+					curFigure.Clear();
+					curFigure.Rotate();
+					curFigure.Draw();
+					break;
+
 			}
 
 		}
