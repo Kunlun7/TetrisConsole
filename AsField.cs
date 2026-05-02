@@ -61,5 +61,11 @@ namespace TetrisConsole
 			}
 		}
 
+		public static bool CheckStrike(APoint p)
+		{
+			return _heap[p.Y][p.X];
+		}
+
+
 	}
 }
