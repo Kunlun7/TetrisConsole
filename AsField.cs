@@ -53,6 +53,66 @@ namespace TetrisConsole
 			}
 		}
 
+		public static void TryDeleteLines()
+		{
+
+			for (int j = 0; j < Height; j++)
+			{
+				int counter = 0;
+				for (int i = 0; i < Width; i++)
+				{
+					if (_heap[j][i])
+					{
+						counter++;
+					}
+				}
+
+				if (counter == Width)
+				{
+					DeleteLine(j);
+					Redraw();
+				}
+			}
+		}
+
+		public static void DeleteLine(int line)
+		{
+			for (int j = line; j >= 0; j++)
+			{
+				for (int i = 0; i < Width; i++)
+				{
+					if (j != 0)
+					{
+						_heap[j][i] = _heap[j - 1][i];
+					}
+					else
+					{
+						_heap[j][i] = false;
+					}
+				}
+			}
+		}
+
+
+		private static void Redraw()
+		{
+			for (int j = 0; j < Height; j++)
+			{
+				for (int i = 0; i < Width; i++)
+				{
+					if (_heap[j][i])
+					{
+						Drawer.DrawPoint(i, j);
+					}
+					else
+					{
+						Drawer.ClearPoint(i, j);
+					}
+				}
+			}
+		}
+
+
 		public static void AddFigure(AFigure fig)
 		{
 			foreach (APoint p in fig.Points)
@@ -60,6 +120,7 @@ namespace TetrisConsole
 				_heap[p.Y][p.X] = true;
 			}
 		}
+
 
 		public static bool CheckStrike(APoint p)
 		{
