@@ -76,7 +76,7 @@ namespace TetrisConsole
 			}
 		}
 
-		internal EMoveResult TryRotate()
+		public EMoveResult TryRotate()
 		{
 			APoint[] newpoints = ClonePoints();
 			Rotate(newpoints);
@@ -89,6 +89,18 @@ namespace TetrisConsole
 			}
 
 			return rotres;
+		}
+
+		public bool IsOnTop()
+		{
+			if (Points[0].Y == 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		public abstract void Rotate(APoint[] plist);

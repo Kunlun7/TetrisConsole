@@ -12,7 +12,7 @@ namespace TetrisConsole
 		static AFigure curFigure;
 		static AFigureGenerator FigGen;
 
-		static private Object _lockObject = new object();
+		private static Object _lockObject = new object();
 
 		static void Main(string[] args)
 		{
@@ -63,11 +63,33 @@ namespace TetrisConsole
 			{
 				AsField.AddFigure(curFigure);
 				AsField.TryDeleteLines();
-				curFigure = FigGen.NewFigure();
-				return true;
+
+				if (curFigure.IsOnTop() && result == EMoveResult.Heap)
+				{
+					WriteGameOver();
+					return true;
+				}
+				else
+				{
+					curFigure = FigGen.NewFigure();
+					return false;
+				}
+			}
+			else
+			{
+				return false;
 			}
 
-			return false;
+		}
+
+		private static void WriteGameOver()
+		{
+			Console.SetCursorPosition(AsField.Width / 2 - 9, AsField.Height / 2 - 1);
+			Console.Write("                  ");
+			Console.SetCursorPosition(AsField.Width / 2 - 9, AsField.Height / 2);
+			Console.Write(" G A M E  O V E R ");
+			Console.SetCursorPosition(AsField.Width / 2 - 9, AsField.Height / 2 + 1);
+			Console.Write("                  ");
 		}
 
 		private static EMoveResult HandleKey(AFigure curFigure, ConsoleKey key)
