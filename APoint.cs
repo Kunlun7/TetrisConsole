@@ -21,6 +21,13 @@ namespace TetrisConsole
 			c = _c;		
 		}
 
+		public APoint(APoint p) {
+
+			x = p.x;
+			y = p.y;
+			c = p.c;		
+		}
+
 
 		public void Draw()
 		{

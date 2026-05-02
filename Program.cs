@@ -5,6 +5,7 @@ namespace TetrisConsole
 {
 	class Program
 	{
+
 		static void Main(string[] args)
 		{
 			int winWidth = 40;
@@ -37,17 +38,17 @@ namespace TetrisConsole
 			{
 				case ConsoleKey.LeftArrow:
 
-					curFigure.Move(EDirection.Left);
+					curFigure.TryMove(EDirection.Left);
 					break;
 
 				case ConsoleKey.RightArrow:
 
-					curFigure.Move(EDirection.Right);
+					curFigure.TryMove(EDirection.Right);
 					break;
 
 				case ConsoleKey.DownArrow:
 
-					curFigure.Move(EDirection.Down);
+					curFigure.TryMove(EDirection.Down);
 					break;
 
 			}
