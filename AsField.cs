@@ -13,11 +13,13 @@ namespace TetrisConsole
 
 		public static int Width
 		{ 
-			get{
+			get
+			{
 				return _winWidth;
 			}
 
-			set{
+			set
+			{
 				_winWidth = value;
 				Console.SetWindowSize(AsField._winWidth, AsField._winHeight);
 				Console.SetBufferSize(AsField._winWidth, AsField._winHeight);
