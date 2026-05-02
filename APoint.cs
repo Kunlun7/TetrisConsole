@@ -49,6 +49,10 @@ namespace TetrisConsole
 		{
 			switch (dir) {
 
+				case EDirection.Up:
+					Y -= 1;
+					break;
+
 				case EDirection.Down:
 					Y += 1;
 					break;

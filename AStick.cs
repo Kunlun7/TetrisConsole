@@ -18,34 +18,34 @@ namespace TetrisConsole
 			Points[3] = new APoint(x, y + 3, c);
 		}
 
-		public override void Rotate(APoint[] plist)
+		public override void Rotate()
 		{
 
-			if (plist[0].X == plist[1].X)
+			if (Points[0].X == Points[1].X)
 			{
-				SetHorizontal(plist);
+				SetHorizontal();
 			}
 			else {
-				SetVertical(plist);
+				SetVertical();
 			}
 		}
 
 
-		private void SetHorizontal(APoint[] plist)
+		private void SetHorizontal()
 		{
-			for (int i = 0; i < plist.Length; i++)
+			for (int i = 0; i < Points.Length; i++)
 			{
-				plist[i].Y = plist[0].Y;
-				plist[i].X = plist[0].X + i;
+				Points[i].Y = Points[0].Y;
+				Points[i].X = Points[0].X + i;
 			}
 		}
 
-		private void SetVertical(APoint[] plist)
+		private void SetVertical()
 		{
-			for (int i = 0; i < plist.Length; i++)
+			for (int i = 0; i < Points.Length; i++)
 			{
-				plist[i].X = plist[0].X;
-				plist[i].Y = plist[0].Y + i;
+				Points[i].X = Points[0].X;
+				Points[i].Y = Points[0].Y + i;
 			}
 		}
 	}

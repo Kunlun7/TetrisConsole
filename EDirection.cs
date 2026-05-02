@@ -8,6 +8,6 @@ namespace TetrisConsole
 {
 	enum EDirection
 	{
-		Left, Right, Down
+		Left, Right, Up, Down
 	}
 }

@@ -24,32 +24,48 @@ namespace TetrisConsole
 
 		public void Clear()
 		{
-
 			foreach (APoint p in Points)
 			{
-
 				p.Clear();
 			}
 		}
 
 		public EMoveResult TryMove(EDirection dir)
 		{
-			APoint[] newpoints = ClonePoints();
-			Move(newpoints, dir);
-			EMoveResult movres = VerifyPosition(newpoints);
-			if (movres == EMoveResult.Success)
+			//APoint[] newpoints = ClonePoints();
+			Clear();
+			
+			Move(dir);
+			EMoveResult movres = VerifyPosition();
+			if (movres != EMoveResult.Success)
 			{
-				Clear();
-				Points = newpoints;
-				Draw();
+				Move(Reverse(dir));
 			}
+			Draw();
 
 			return movres;
 		}
 
-		private EMoveResult VerifyPosition(APoint[] plist)
+		private EDirection Reverse(EDirection dir)
 		{
-			foreach (APoint p in plist)
+			switch (dir)
+			{
+				case EDirection.Left:
+					return EDirection.Right;
+				case EDirection.Right:
+					return EDirection.Left;
+				case EDirection.Up:
+					return EDirection.Down;
+				case EDirection.Down:
+					return EDirection.Up;
+				default:
+					return EDirection.Down;
+			}
+		}
+
+		private EMoveResult VerifyPosition()
+		{
+			foreach (APoint p in Points)
 			{
 				if (p.Y >= AsField.Height)
 				{
@@ -68,9 +84,9 @@ namespace TetrisConsole
 			return EMoveResult.Success;
 		}
 
-		public void Move(APoint[] plist, EDirection dir)
+		public void Move(EDirection dir)
 		{
-			foreach (APoint p in plist)
+			foreach (APoint p in Points)
 			{
 				p.Move(dir);
 			}
@@ -78,18 +94,21 @@ namespace TetrisConsole
 
 		public EMoveResult TryRotate()
 		{
-			APoint[] newpoints = ClonePoints();
-			Rotate(newpoints);
-			EMoveResult rotres = VerifyPosition(newpoints);
-			if (rotres == EMoveResult.Success)
+			Clear();
+			//APoint[] newpoints = ClonePoints();
+			Rotate();
+			EMoveResult rotres = VerifyPosition();
+			if (rotres != EMoveResult.Success)
 			{
-				Clear();
-				Points = newpoints;
-				Draw();
+				Rotate();
 			}
-
+			Draw();
 			return rotres;
 		}
+
+
+		public abstract void Rotate();
+
 
 		public bool IsOnTop()
 		{
@@ -102,20 +121,6 @@ namespace TetrisConsole
 				return false;
 			}
 		}
-
-		public abstract void Rotate(APoint[] plist);
-
-		private APoint[] ClonePoints()
-		{
-			APoint[] np = new APoint[pCount];
-			for (int i = 0; i < pCount; i++)
-			{
-				np[i] = new APoint(Points[i]);
-			}
-
-			return np;
-		}
-
 
 	}
 }
