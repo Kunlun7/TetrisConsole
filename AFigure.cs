@@ -10,7 +10,7 @@ namespace TetrisConsole
 	abstract class AFigure
 	{
 		const int pCount = 4;
-		protected APoint[] Points = new APoint[pCount];
+		public APoint[] Points = new APoint[pCount];
 
 		public void Draw()
 		{

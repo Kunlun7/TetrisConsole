@@ -41,5 +41,17 @@ namespace TetrisConsole
 			}
 		}
 
+		private static bool[][] _heap;
+
+		static AsField()
+		{ 
+			// все значени массива по умолчанию - false
+			_heap = new bool [Height][];
+			for (int i = 0; i < Height; i++)
+			{
+				_heap[i] = new bool[Width];
+			}
+		}
+
 	}
 }
