@@ -8,7 +8,19 @@ namespace TetrisConsole
 {
 	static class AsField
 	{
-		public const int winWidth = 40;
-		public const int winHeight = 30;
+		private static int _winWidth = 40;
+		private static int _winHeight = 30;
+
+		public static int GetWidth()
+		{
+			return _winWidth;
+		}
+
+		public static void SetWidth(int v)
+		{
+			_winWidth = v;
+			Console.SetWindowSize(AsField._winWidth, AsField._winHeight);
+			Console.SetBufferSize(AsField._winWidth, AsField._winHeight);
+		}
 	}
 }
