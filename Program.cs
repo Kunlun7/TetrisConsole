@@ -12,32 +12,29 @@ namespace TetrisConsole
 			Console.SetWindowSize(winWidth, winHeight);
 			Console.SetBufferSize(winWidth, winHeight);
 
-			APoint p1 = new APoint(3, 4, '*');
-			p1.Draw();
+			//APoint p1 = new APoint(3, 4, '*');
+			//p1.Draw();
 
-			APoint p2 = new APoint() { x = 5, y = 6, c = '*' };
-			p2.Draw();
+			//APoint p2 = new APoint() { x = 5, y = 6, c = '*' };
+			//p2.Draw();
 
-			AFigure st1 = new AStick(7, 4, '#');
-			st1.Draw();
+			AFigureGenerator FigGen = new AFigureGenerator(20, 0, '*');
 
-			for (int i = 0; i < 10; i++) {
+			AFigure F = FigGen.NewFigure();
+
+			//AFigure st1 = new AStick(7, 4, '#');
+			F.Draw();
+
+			for (int i = 0; i < 4; i++)
+			{
 
 				Thread.Sleep(500);
-				st1.Clear();
-				st1.Rotate();
-				st1.Draw();
+				F.Clear();
+				F.Rotate();
+				F.Draw();
 			}
 
 
-			//AFigure[] fig = new AFigure[2];
-			//fig[0] = new ASquare(2, 5, '#');
-			//fig[1] = new AStick(8, 5, '#');
-
-			//foreach (AFigure f in fig) {
-
-			//	f.Draw();
-			//}
 
 			Console.ReadLine();
 		}
