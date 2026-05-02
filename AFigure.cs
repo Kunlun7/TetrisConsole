@@ -32,28 +32,40 @@ namespace TetrisConsole
 			}
 		}
 
-		public void TryMove(EDirection dir)
+		public EMoveResult TryMove(EDirection dir)
 		{
-			APoint[] newpoints = GetPoints();
+			APoint[] newpoints = ClonePoints();
 			Move(newpoints, dir);
-			if (VerifyPosition(newpoints))
+			EMoveResult movres = VerifyPosition(newpoints);
+			if (movres == EMoveResult.Success)
 			{
 				Clear();
 				Points = newpoints;
 				Draw();
 			}
 
+			return movres;
 		}
 
-		private bool VerifyPosition(APoint[] plist)
+		private EMoveResult VerifyPosition(APoint[] plist)
 		{
 			foreach (APoint p in plist)
 			{
-				if (p.X < 0 || p.Y < 0 || p.X >= AsField.Width || p.Y >= AsField.Height) {
-					return false;
+				if (p.Y >= AsField.Height)
+				{
+					return EMoveResult.BorderBottom;
+				}
+				if (p.X < 0 || p.Y < 0 || p.X >= AsField.Width)
+				{
+					return EMoveResult.BorderSide;
+				}
+				if (AsField.CheckStrike(p))
+				{
+					return EMoveResult.Heap;
 				}
 			}
-			return true;
+
+			return EMoveResult.Success;
 		}
 
 		public void Move(APoint[] plist, EDirection dir)
@@ -64,21 +76,24 @@ namespace TetrisConsole
 			}
 		}
 
-		internal void TryRotate()
+		internal EMoveResult TryRotate()
 		{
-			APoint[] newpoints = GetPoints();
+			APoint[] newpoints = ClonePoints();
 			Rotate(newpoints);
-			if (VerifyPosition(newpoints))
+			EMoveResult rotres = VerifyPosition(newpoints);
+			if (rotres == EMoveResult.Success)
 			{
 				Clear();
 				Points = newpoints;
 				Draw();
 			}
+
+			return rotres;
 		}
 
 		public abstract void Rotate(APoint[] plist);
 
-		private APoint[] GetPoints()
+		private APoint[] ClonePoints()
 		{
 			APoint[] np = new APoint[pCount];
 			for (int i = 0; i < pCount; i++)
