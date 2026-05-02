@@ -20,21 +20,22 @@ namespace TetrisConsole
 
 			AFigureGenerator FigGen = new AFigureGenerator(20, 0, '*');
 
-			AFigure F = FigGen.NewFigure();
 
-			//AFigure st1 = new AStick(7, 4, '#');
-			F.Draw();
-
-			for (int i = 0; i < 4; i++)
+			while (true)
 			{
 
-				Thread.Sleep(500);
-				F.Clear();
-				F.Rotate();
-				F.Draw();
+				AFigure F = FigGen.NewFigure();
+
+				for (int i = 0; i < 15; i++)
+				{
+
+					F.Clear();
+					F.Move(EDirection.Down);
+					F.Draw();
+					Thread.Sleep(200);
+				}
+
 			}
-
-
 
 			Console.ReadLine();
 		}
