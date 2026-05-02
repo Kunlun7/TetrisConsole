@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TetrisConsole
 {
-	class AFigure
+	abstract class AFigure
 	{
 		protected APoint[] Points = new APoint[4];
 
@@ -39,6 +39,7 @@ namespace TetrisConsole
 				p.Move(dir);
 			}
 		}
+		public abstract void Rotate();
 
 	}
 }

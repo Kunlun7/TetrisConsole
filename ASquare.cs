@@ -19,5 +19,10 @@ namespace TetrisConsole
 			Points[3] = new APoint(x + 1, y + 1, c);
 		}
 
+		public override void Rotate()
+		{
+		}
+
+
 	}
 }

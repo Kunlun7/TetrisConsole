@@ -15,16 +15,19 @@ namespace TetrisConsole
 			APoint p1 = new APoint(3, 4, '*');
 			p1.Draw();
 
-			APoint p2 = new APoint () { x = 5, y = 6, c = '*'};
+			APoint p2 = new APoint() { x = 5, y = 6, c = '*' };
 			p2.Draw();
 
-			ASquare sq1 = new ASquare(7, 4, '#');
-			sq1.Draw();
-			Thread.Sleep(500);
-			sq1.Clear();
-			sq1.Move(EDirection.Right);
-			sq1.Draw();
+			AFigure st1 = new AStick(7, 4, '#');
+			st1.Draw();
 
+			for (int i = 0; i < 10; i++) {
+
+				Thread.Sleep(500);
+				st1.Clear();
+				st1.Rotate();
+				st1.Draw();
+			}
 
 
 			//AFigure[] fig = new AFigure[2];
