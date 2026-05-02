@@ -21,6 +21,16 @@ namespace TetrisConsole
 			}
 		}
 
+		public void Clear()
+		{
+
+			foreach (APoint p in Points)
+			{
+
+				p.Clear();
+			}
+		}
+
 		public void Move(EDirection dir)
 		{
 

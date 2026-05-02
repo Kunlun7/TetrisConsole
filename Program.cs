@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace TetrisConsole
 {
@@ -19,6 +20,8 @@ namespace TetrisConsole
 
 			ASquare sq1 = new ASquare(7, 4, '#');
 			sq1.Draw();
+			Thread.Sleep(500);
+			sq1.Clear();
 			sq1.Move(EDirection.Right);
 			sq1.Draw();
 

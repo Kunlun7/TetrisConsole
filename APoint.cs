@@ -29,6 +29,12 @@ namespace TetrisConsole
 			Console.Write(c);
 		}
 
+		internal void Clear()
+		{
+			Console.SetCursorPosition(x, y);
+			Console.Write(' ');
+		}
+
 		internal void Move(EDirection dir)
 		{
 			switch (dir) {
