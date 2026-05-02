@@ -31,7 +31,6 @@ namespace TetrisConsole
 
 		public void Draw()
 		{
-
 			Console.SetCursorPosition(X, Y);
 			Console.Write(C);
 		}

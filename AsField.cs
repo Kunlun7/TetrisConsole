@@ -102,11 +102,11 @@ namespace TetrisConsole
 				{
 					if (_heap[j][i])
 					{
-						Drawer.DrawPoint(i, j);
+						AsDrawer.DrawPoint(i, j);
 					}
 					else
 					{
-						Drawer.ClearPoint(i, j);
+						AsDrawer.ClearPoint(i, j);
 					}
 				}
 			}

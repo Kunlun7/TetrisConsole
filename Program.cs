@@ -14,7 +14,7 @@ namespace TetrisConsole
 
 			//AsField.SetWidth(20);
 
-			FigGen = new AFigureGenerator(20, 0, '*');
+			FigGen = new AFigureGenerator(AsField.Width / 2, 0, AsDrawer.FigureChar);
 
 			AFigure curFigure = FigGen.NewFigure();
 
