@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Threading;
+using System.Timers;
 
 namespace TetrisConsole
 {
 	class Program
 	{
+		static int TimerInterval = 500;
+		static System.Timers.Timer GameTimer;
+
+		static AFigure curFigure;
 		static AFigureGenerator FigGen;
 
 		static void Main(string[] args)
@@ -13,7 +18,8 @@ namespace TetrisConsole
 
 			FigGen = new AFigureGenerator(AsField.Width / 2, 0, AsDrawer.FigureChar);
 
-			AFigure curFigure = FigGen.NewFigure();
+			curFigure = FigGen.NewFigure();
+			
 
 			while (true)
 			{
