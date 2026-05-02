@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace TetrisConsole
 {
-	class ASquare
+	class ASquare : AFigure
 	{
 
-		APoint[] Points = new APoint[4];
 
 		public ASquare(int x, int y, char c) {
 
@@ -18,15 +17,6 @@ namespace TetrisConsole
 			Points[1] = new APoint(x + 1, y, c);
 			Points[2] = new APoint(x, y + 1, c);
 			Points[3] = new APoint(x + 1, y + 1, c);
-		}
-		public void Draw()
-		{
-
-			foreach (APoint p in Points)
-			{
-
-				p.Draw();
-			}
 		}
 
 	}

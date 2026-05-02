@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace TetrisConsole
 {
-	class AStick
+	class AStick : AFigure
 	{
-		APoint[] Points = new APoint[4];
 
 		public AStick(int x, int y, char c)
 		{
@@ -19,15 +18,6 @@ namespace TetrisConsole
 			Points[3] = new APoint(x, y + 3, c);
 		}
 
-		public void Draw()
-		{
-
-			foreach (APoint p in Points)
-			{
-
-				p.Draw();
-			}
-		}
 
 	}
 }
