@@ -33,12 +33,14 @@ namespace TetrisConsole
 		{
 			Console.SetCursorPosition(X, Y);
 			Console.Write(C);
+			Console.SetCursorPosition(0, 0);
 		}
 
 		internal void Clear()
 		{
 			Console.SetCursorPosition(X, Y);
-			Console.Write(' ');
+			Console.Write(AsDrawer.FieldChar);
+			Console.SetCursorPosition(0, 0);
 		}
 
 		internal void Move(EDirection dir)

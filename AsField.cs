@@ -8,8 +8,8 @@ namespace TetrisConsole
 {
 	static class AsField
 	{
-		private static int _winWidth = 40;
-		private static int _winHeight = 30;
+		private static int _winWidth = 20;
+		private static int _winHeight = 20;
 
 		public static int Width
 		{ 
@@ -21,8 +21,8 @@ namespace TetrisConsole
 			set
 			{
 				_winWidth = value;
-				Console.SetWindowSize(AsField._winWidth, AsField._winHeight);
-				Console.SetBufferSize(AsField._winWidth, AsField._winHeight);
+				Console.SetWindowSize(AsField._winWidth, AsField._winHeight + 1);
+				Console.SetBufferSize(AsField._winWidth, AsField._winHeight + 1);
 			}
 		}
 
@@ -36,8 +36,8 @@ namespace TetrisConsole
 			set
 			{
 				_winHeight = value;
-				Console.SetWindowSize(AsField._winWidth, AsField._winHeight);
-				Console.SetBufferSize(AsField._winWidth, AsField._winHeight);
+				Console.SetWindowSize(AsField._winWidth, AsField._winHeight + 1);
+				Console.SetBufferSize(AsField._winWidth, AsField._winHeight + 1);
 			}
 		}
 
@@ -51,6 +51,14 @@ namespace TetrisConsole
 			{
 				_heap[i] = new bool[Width];
 			}
+		}
+
+		public static void Init()
+		{
+			Console.SetWindowSize(AsField.Width, AsField.Height + 1);
+			Console.SetBufferSize(AsField.Width, AsField.Height + 1);
+			Console.CursorVisible = false;
+			Redraw();
 		}
 
 		public static void TryDeleteLines()
@@ -77,7 +85,7 @@ namespace TetrisConsole
 
 		public static void DeleteLine(int line)
 		{
-			for (int j = line; j >= 0; j++)
+			for (int j = line; j >= 0; j--)
 			{
 				for (int i = 0; i < Width; i++)
 				{

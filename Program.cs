@@ -9,10 +9,7 @@ namespace TetrisConsole
 
 		static void Main(string[] args)
 		{
-			Console.SetWindowSize(AsField.Width, AsField.Height);
-			Console.SetBufferSize(AsField.Width, AsField.Height);
-
-			//AsField.SetWidth(20);
+			AsField.Init();
 
 			FigGen = new AFigureGenerator(AsField.Width / 2, 0, AsDrawer.FigureChar);
 

@@ -9,7 +9,7 @@ namespace TetrisConsole
 	public static class AsDrawer
 	{
 		public const char FigureChar = '*';
-		public const char FieldChar = ' ';
+		public const char FieldChar = '.';
 
 		public static void DrawPoint(int x, int y)
 		{
