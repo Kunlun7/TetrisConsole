@@ -17,7 +17,8 @@ namespace TetrisConsole
 			APoint p2 = new APoint () { x = 5, y = 6, c = '#'};
 			p2.Draw();
 
-
+			ASquare s1 = new ASquare(2, 5, '#');
+			//s1.Draw();
 
 
 			Console.ReadLine();
