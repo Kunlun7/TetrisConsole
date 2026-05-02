@@ -39,6 +39,7 @@ namespace TetrisConsole
 			if (result == EMoveResult.BorderBottom || result == EMoveResult.Heap)
 			{
 				AsField.AddFigure(curFigure);
+				AsField.TryDeleteLines();
 				curFigure = FigGen.NewFigure();
 				return true;
 			}
