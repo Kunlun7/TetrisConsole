@@ -53,5 +53,13 @@ namespace TetrisConsole
 			}
 		}
 
+		public static void AddFigure(AFigure fig)
+		{
+			foreach (APoint p in fig.Points)
+			{
+				_heap[p.Y][p.X] = true;
+			}
+		}
+
 	}
 }
