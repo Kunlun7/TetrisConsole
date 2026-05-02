@@ -21,7 +21,7 @@ namespace TetrisConsole
 		public override void Rotate(APoint[] plist)
 		{
 
-			if (plist[0].x == plist[1].x)
+			if (plist[0].X == plist[1].Y)
 			{
 				SetHorizontal(plist);
 			}
@@ -35,8 +35,8 @@ namespace TetrisConsole
 		{
 			for (int i = 0; i < plist.Length; i++)
 			{
-				plist[i].y = plist[0].y;
-				plist[i].x = plist[0].x + i;
+				plist[i].Y = plist[0].Y;
+				plist[i].X = plist[0].X + i;
 			}
 		}
 
@@ -44,8 +44,8 @@ namespace TetrisConsole
 		{
 			for (int i = 0; i < plist.Length; i++)
 			{
-				plist[i].x = plist[0].x;
-				plist[i].y = plist[0].y + i;
+				plist[i].X = plist[0].X;
+				plist[i].Y = plist[0].Y + i;
 			}
 		}
 	}

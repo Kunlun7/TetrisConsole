@@ -32,18 +32,6 @@ namespace TetrisConsole
 			}
 		}
 
-		//public void Move(EDirection dir)
-		//{
-		//	Clear();
-
-		//	foreach (APoint p in Points) {
-
-		//		p.Move(dir);
-		//	}
-
-		//	Draw();
-		//}
-
 		public void TryMove(EDirection dir)
 		{
 			APoint[] newpoints = GetPoints();
@@ -61,7 +49,7 @@ namespace TetrisConsole
 		{
 			foreach (APoint p in plist)
 			{
-				if (p.x < 0 || p.y < 0 || p.x >= AsField.Width || p.y >= AsField.Height) {
+				if (p.X < 0 || p.Y < 0 || p.X >= AsField.Width || p.Y >= AsField.Height) {
 					return false;
 				}
 			}

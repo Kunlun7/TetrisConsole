@@ -8,37 +8,37 @@ namespace TetrisConsole
 {
 	class APoint
 	{
-		public int x;
-		public int y;
-		public char c;
+		public int X { get; set; }
+		public int Y;
+		public char C;
 
 		public APoint() {}
 
 		public APoint(int _x, int _y, char _c) {
 
-			x = _x;
-			y = _y;
-			c = _c;		
+			X = _x;
+			Y = _y;
+			C = _c;		
 		}
 
 		public APoint(APoint p) {
 
-			x = p.x;
-			y = p.y;
-			c = p.c;		
+			X = p.X;
+			Y = p.Y;
+			C = p.C;		
 		}
 
 
 		public void Draw()
 		{
 
-			Console.SetCursorPosition(x, y);
-			Console.Write(c);
+			Console.SetCursorPosition(X, Y);
+			Console.Write(C);
 		}
 
 		internal void Clear()
 		{
-			Console.SetCursorPosition(x, y);
+			Console.SetCursorPosition(X, Y);
 			Console.Write(' ');
 		}
 
@@ -47,15 +47,15 @@ namespace TetrisConsole
 			switch (dir) {
 
 				case EDirection.Down:
-					y += 1;
+					Y += 1;
 					break;
 
 				case EDirection.Left:
-					x -= 1;
+					Y -= 1;
 					break;
 
 				case EDirection.Right:
-					x += 1;
+					X += 1;
 					break;
 
 			}
